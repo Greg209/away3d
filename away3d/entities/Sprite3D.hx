@@ -58,7 +58,7 @@ class Sprite3D extends Entity implements IRenderable
 	
 	private var _pickingSubMesh:SubMesh;
 	private var _pickingTransform:Matrix3D;
-	private var _camera:Camera3D;
+	public var camera:Camera3D;
 	
 	private var _width:Float;
 	private var _height:Float;
@@ -273,7 +273,7 @@ class Sprite3D extends Entity implements IRenderable
 	
 	@:allow(away3d) override private function collidesBefore(shortestCollisionDistance:Float, findClosest:Bool):Bool
 	{
-		var viewTransform:Matrix3D = _camera.inverseSceneTransform.clone();
+		var viewTransform:Matrix3D = camera.inverseSceneTransform.clone();
 		viewTransform.transpose();
 		var rawViewTransform:Vector<Float> = Matrix3DUtils.RAW_DATA_CONTAINER;
 		viewTransform.copyRawDataTo(rawViewTransform);

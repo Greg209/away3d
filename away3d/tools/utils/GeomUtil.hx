@@ -251,6 +251,7 @@ class GeomUtil
 	 */
 	public static function getMeshSubMeshIndex(subMesh:SubMesh):Int
 	{
+		if (subMesh.parentMesh==null) return 0;
 		var index:Int = 0;
 		var subMeshes:Vector<SubMesh> = subMesh.parentMesh.subMeshes;
 		for (i in 0...subMeshes.length) {

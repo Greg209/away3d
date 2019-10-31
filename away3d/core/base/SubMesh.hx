@@ -275,7 +275,7 @@ class SubMesh implements IRenderable
 	{
 		if (_material != null)
 			return _material;
-		return _parentMesh.material;
+		return _parentMesh != null ? _parentMesh.material : null;
 	}
 	
 	private function set_material(value:MaterialBase):MaterialBase
