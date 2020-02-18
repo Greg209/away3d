@@ -78,8 +78,11 @@ class TextureProxyBase extends NamedAssetBase implements IAsset
 		
 		if (context == null) return null;
 		
-		if (tex == null || _dirty[contextIndex] != context) {
+		@:privateAccess if (tex == null || (_width != tex.__width || _height != tex.__height)) {
 			_textures[contextIndex] = tex = createTexture(context);
+			_dirty[contextIndex] = context;
+			uploadContent(tex);
+		} else if (_dirty[contextIndex] != context) {
 			_dirty[contextIndex] = context;
 			uploadContent(tex);
 		}
